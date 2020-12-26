@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bottomNavfragments.CalendarFragment"
+    android:background="@color/baby_blue">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg1"
+        android:id="@+id/layout2"
+        android:padding="2dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Expected Period"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
+            android:drawableLeft="@drawable/ic_action_experiod"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fertile Days"
+            android:drawableLeft="@drawable/ic_action_fertiledays"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity ="center"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+    <ru.cleverpumpkin.calendar.CalendarView
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout2"
+        android:layout_above="@+id/showText"
+        style="@style/CalendarViewCustomStyle"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/showText"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

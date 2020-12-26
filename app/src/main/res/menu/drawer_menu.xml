@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn= "navigation_view">
+
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_prof"
+            android:title="Profile"
+            android:icon="@drawable/ic_action_profile"/>
+
+        <item android:id="@+id/nav_cycle"
+            android:title="Cycle"
+            android:icon="@drawable/ic_action_cycle" />
+
+        <item android:id="@+id/nav_reminders"
+            android:title="Reminder"
+            android:icon="@drawable/ic_action_reminder"/>
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item android:title="Share"
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_action_share"/>
+
+            <item android:id="@+id/nav_support"
+                android:title="Customer Support"
+                android:icon="@drawable/ic_action_support"/>
+
+        </menu>
+    </item>
+
+    <item android:title="Account">
+        <menu>
+            <item android:title="Setting"
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_action_setting"/>
+
+            <item android:title="Log Out"
+                android:id="@+id/nav_logOut"
+                android:icon="@drawable/ic_action_logout"/>
+
+        </menu>
+    </item>
+
+</menu>

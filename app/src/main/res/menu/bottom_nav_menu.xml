@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Calendar"
+        android:id="@+id/bottomNav_calendar"
+        android:icon="@drawable/ic_action_homecalendar"/>
+
+    <item android:title="@string/graph"
+        android:icon="@drawable/ic_action_graph"
+        android:id="@+id/bottomNav_graphData"/>
+
+    <item android:title="Community"
+        android:icon="@drawable/ic_action_community"
+        android:id="@+id/bottomNave_community"/>
+</menu>
