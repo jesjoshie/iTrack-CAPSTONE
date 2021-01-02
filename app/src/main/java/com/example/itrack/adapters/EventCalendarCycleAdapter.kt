@@ -21,11 +21,9 @@ class EventCalendarCycleAdapter (
             val eventItem = getItem(position)
 
             if (eventItem != null) {
-                view.findViewById<View>(R.id.colorView).setBackgroundColor(eventItem.color)
                 view.findViewById<TextView>(R.id.eventNameView).text = eventItem.eventName
                 view.findViewById<LinearLayout>(R.id.eventDialogRoot).setBackgroundColor(eventItem.color)
             }
-
             return view
         }
 }

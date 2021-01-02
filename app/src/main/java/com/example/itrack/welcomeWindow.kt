@@ -15,7 +15,7 @@ class welcomeWindow : AppCompatActivity() {
         setContentView(R.layout.activity_welcome_window)
 
         Handler().postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, startInformation::class.java))
             finish()
         },4000)
     }

@@ -106,9 +106,12 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
 
         for(i in months_to_Indicate){
 
+            var nextPeriod_date = startDate
+
             var currentPeriodRange = DateProgression(startDate,startDate.plusDays(4),1)
             var currentfertileWindow = startDate.plusDays(ovulationDay.toLong())
             var currentFertileRange = DateProgression(currentfertileWindow,currentfertileWindow.plusDays(10),1)
+            var ovulationDate = nextPeriod_date.minusDays(14)
 
 
             if(startDate == startDateParse ){
@@ -120,20 +123,46 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
               }
             else if (startDate != startDateParse){
                 for (pDays in currentPeriodRange) {
-                    eventItems += EventCalendarCycle(
-                            eventName = "Expected Period Day",
-                            date = CalendarDate(sdf.parse(pDays.toString()).time),
-                            color = context.getColorInt(R.color.red)
-                    )
+                    if(pDays == nextPeriod_date){
+                        eventItems += EventCalendarCycle(
+                                eventName = "Expected Next Period Day",
+                                date = CalendarDate(sdf.parse(pDays.toString()).time),
+                                color = context.getColorInt(R.color.red))
+                        eventItems += EventCalendarCycle(
+                                eventName = " ",
+                                date = CalendarDate(sdf.parse(pDays.toString()).time),
+                                color = context.getColorInt(R.color.red))
+                    }
+                    else {
+                        eventItems += EventCalendarCycle(
+                                eventName = "Expected Period Day",
+                                date = CalendarDate(sdf.parse(pDays.toString()).time),
+                                color = context.getColorInt(R.color.red)
+                        )
+                    }
                 }
             }
 
             for (fDays in currentFertileRange step 1){
-                eventItems += EventCalendarCycle(
-                        eventName = "High Chance of Getting Pregnant",
-                        date = CalendarDate(sdf.parse(fDays.toString()).time),
-                        color = context.getColorInt(R.color.ferttileColor)
-                )
+                if (fDays == ovulationDate){
+                    eventItems += EventCalendarCycle(
+                            eventName = "Ovulation Day",
+                            date = CalendarDate(sdf.parse(fDays.toString()).time),
+                            color = context.getColorInt(R.color.ferttileColor)
+                    )
+                    eventItems += EventCalendarCycle(
+                            eventName = " ",
+                            date = CalendarDate(sdf.parse(fDays.toString()).time),
+                            color = context.getColorInt(R.color.ferttileColor)
+                    )
+                }
+                else {
+                    eventItems += EventCalendarCycle(
+                            eventName = "High Chance of Getting Pregnant",
+                            date = CalendarDate(sdf.parse(fDays.toString()).time),
+                            color = context.getColorInt(R.color.ferttileColor)
+                    )
+                }
             }
             startDate = startDate.plusDays(avgCycle.toLong())
 
@@ -151,7 +180,7 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
             val adapter = EventCalendarCycleAdapter(requireContext(), eventItems)
 
             val builder = AlertDialog.Builder(requireContext())
-                    .setTitle("${sdf.format(date)}")
+                    .setTitle("${sdf.format(date.date)}")
                     .setAdapter(adapter, null)
 
             val dialog = builder.create()
