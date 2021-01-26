@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_graph"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/baby_blue"
     tools:context=".bottomNavfragments.graphDataFragment">
-
     <GridView
         android:id="@+id/dataGraphGridView"
         android:layout_width="match_parent"
@@ -16,4 +16,5 @@
         android:stretchMode="columnWidth"
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"/>
+
 </FrameLayout>

@@ -10,7 +10,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.itrack.bottomNavfragments.graphDataFragment
 import com.example.itrack.models.last_period_info
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.lang.Exception
 import java.util.*
 
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         btn2Text = findViewById<Button>(R.id.pregnancy).hint.toString()
         findViewById<Button>(R.id.trackperiod).setOnClickListener { next(btn1Text) }
         findViewById<Button>(R.id.pregnancy).setOnClickListener { next(btn2Text) }
+
     }
     //button next
     private fun next(purpose: String){
@@ -34,4 +37,5 @@ class MainActivity : AppCompatActivity() {
         purposeIntent.putExtra("purpose", purpose)
         startActivity(purposeIntent)
     }
+
 }
