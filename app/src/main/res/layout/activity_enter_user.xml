@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context=".EnterUser">
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/itracklogo"
+            />
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/userName"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/white"
+        android:hint="Username"
+        android:textColorHint="@color/white"
+        android:paddingLeft="10dp"
+        android:drawableLeft="@drawable/ic_action_name"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/password"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/white"
+        android:hint="Password"
+        android:textColorHint="@color/white"
+        android:paddingLeft="10dp"
+        android:drawableLeft="@drawable/ic_action_pass"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/login"
+        android:layout_height="wrap_content"
+        android:hint="Log In"
+        android:textColorHint="@color/white"
+        android:layout_gravity="center"
+        android:textSize="15dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/medium_azure"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/create"
+        android:layout_height="wrap_content"
+        android:hint="Create Account"
+        android:textColorHint="@color/white"
+        android:layout_gravity="center"
+        android:textSize="15dp"
+        android:layout_marginTop="5dp"
+        android:onClick="createAccount"
+        android:backgroundTint="@color/medium_azure"/>
+
+</LinearLayout>

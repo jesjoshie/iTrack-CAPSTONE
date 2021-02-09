@@ -90,7 +90,7 @@ class startInformation : AppCompatActivity() {
         }
 
         fun proceed(view: View) {
-            val proceedIntent = Intent(this, LogIn::class.java)
+            val proceedIntent = Intent(this, EnterUser::class.java)
             proceedIntent.putExtra("lperiod_Year", lperiod_Year)
             proceedIntent.putExtra("lperiod_month", lperiod_Month)
             proceedIntent.putExtra("lperiod_Day", lperiod_Day)

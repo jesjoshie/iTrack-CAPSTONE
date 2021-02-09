@@ -38,7 +38,7 @@ class Home : AppCompatActivity() {
 
         // set toolbar
         toolbar = findViewById<Toolbar>(R.id.nav_toolbar)
-        setSupportActionBar(toolbar)
+       // setSupportActionBar(toolbar)
 
         //late init
         drawLayout = findViewById(R.id.draw_layout)

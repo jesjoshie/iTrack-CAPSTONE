@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ITrack">
+        <activity android:name=".Pedometer"></activity>
+        <activity android:name=".EnterUser" />
+        <activity android:name=".GraphdataFragment" />
+        <activity android:name=".MoodTracker" />
         <activity
             android:name=".grapDataFragmentTest"
             android:label="@string/title_activity_grap_data_fragment_test"
-            android:theme="@style/Theme.ITrack.NoActionBar"></activity>
+            android:theme="@style/Theme.ITrack.NoActionBar" />
         <activity android:name=".graphData" />
         <activity
             android:name=".Home"
