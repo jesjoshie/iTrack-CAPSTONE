@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context=".MoodTracker">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="HOW ARE YOU?"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:id="@+id/smile"
+                android:layout_width="60dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_smile"
+
+                />
+
+            <ImageButton
+                android:id="@+id/good"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:background="@drawable/custom_good"
+
+                />
+            <ImageButton
+                android:id="@+id/meh"
+                android:layout_marginTop="1dp"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:background="@drawable/custom_meh"
+                />
+            <ImageButton
+                android:id="@+id/sad"
+                android:layout_marginTop="1dp"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:background="@drawable/custom_buttom"
+                android:layout_marginLeft="2dp"
+
+                />
+            <ImageButton
+                android:id="@+id/awful"
+                android:layout_marginTop="10dp"
+                android:layout_width="50dp"
+                android:layout_height="55dp"
+                android:background="@drawable/custom_awful"
+                android:layout_marginLeft="5dp"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="WHAT HAVE YOU BEEN UP TO?"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="-50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioGroup
+                android:id="@+id/ratingRadioGroup"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="25dp">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/family"
+                    android:text="Family"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/exercise"
+                    android:text="Exercise"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/date1"
+                    android:text="Date"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sports"
+                    android:text="Sports"/>
+
+
+
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="-240dp"
+            android:layout_marginLeft="200dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioGroup
+                android:id="@+id/ratingRadioGroup1"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="25dp">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/friends"
+                    android:text="Friends"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sleep"
+                    android:text="Sleep"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie"
+                    android:text="Movie"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cleaning"
+                    android:text="Cleaning"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="JOURNAL"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="20dp"/>
+    </LinearLayout>
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Journal" />
+        <Button
+            android:layout_marginLeft="260dp"
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"/>
+
+
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/add"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="500dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/edit"
+        android:backgroundTint="@color/white"
+
+        />
+
+
+</LinearLayout>
