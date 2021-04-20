@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.itrack.adapters.NoteModel;
 import com.example.itrack.adapters.NoteViewHolder;
@@ -27,7 +30,7 @@ private DatabaseReference fNotesDatabase;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal_);
-        mNotesList.findViewById(R.id.main_notes_list);
+        mNotesList= findViewById(R.id.main_notes_list);
         gridLayoutManager = new GridLayoutManager(this,3,RecyclerView.VERTICAL,false);
 
         mNotesList.setHasFixedSize(true);
@@ -73,5 +76,23 @@ private DatabaseReference fNotesDatabase;
             }
         };
         mNotesList.setAdapter(firebaseRecyclerAdapter);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case  R.id.main_new_note_btn :
+                Intent newIntent = new Intent(Journal_.this,Mood.class);
+                startActivity(newIntent);
+                break;
+        }
+        return true;
     }
 }

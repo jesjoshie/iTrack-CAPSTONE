@@ -31,7 +31,7 @@ class graphDataFragment : Fragment(R.layout.fragment_graph_data) {
                         startActivity(Intent(activity, bbt_interface::class.java))
                     }
                     else if (imgPos == pos2){
-                        startActivity(Intent(activity,Mood::class.java))
+                        startActivity(Intent(activity,Journal_::class.java))
                     }
                     else true
                 }
