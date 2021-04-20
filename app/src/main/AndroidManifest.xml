@@ -15,7 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ITrack">
-        <activity android:name=".bbt_test"/>
+        <activity android:name=".MainActivity1"></activity>
+        <activity android:name=".Journal_" />
+        <activity android:name=".ShowActivity" />
+        <activity android:name=".Mood">
+            android:theme="@style/AppTheme.NoactionBar"
+        </activity>
+        <activity android:name=".bbt_interface" />
+        <activity android:name=".MainActivity2" />
+        <activity android:name=".bbt_test" />
         <activity android:name=".BBTinterface" />
         <activity android:name=".ui.BbtInterface" />
         <activity android:name=".reminder.reminderAdd" />

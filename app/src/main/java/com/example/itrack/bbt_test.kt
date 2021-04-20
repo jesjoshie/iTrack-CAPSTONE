@@ -10,15 +10,24 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.firebase.database.*
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
+import kotlin.collections.ArrayList
+
+private val FirebaseFirestore.id: Any
+    get() {
+      return  true
+    }
+
 
 class bbt_test : AppCompatActivity() {
     lateinit var xValue: EditText
     lateinit var yValue: EditText
     lateinit var insertBtn: Button
     lateinit var lineChart: LineChart
+
     lateinit var firebaseDatabase: FirebaseDatabase
-    private lateinit var myRef: DatabaseReference
+    lateinit var myRef: DatabaseReference
     var lineDataSet = LineDataSet(null, null)
     var iLineDataSets = ArrayList<ILineDataSet>()
     lateinit var lineData: LineData
@@ -33,24 +42,28 @@ class bbt_test : AppCompatActivity() {
         lineChart = findViewById(R.id.lineChart)
         firebaseDatabase = FirebaseDatabase.getInstance()
         myRef = firebaseDatabase.getReference("ChartValues")
-        insertData(myRef)
+        insertData()
 
-    }
+        /*test*/
 
-    private fun  insertData(myRef:DatabaseReference){
-        insertBtn.setOnClickListener {
-            val id = myRef.push().key
-            val x = xValue.text.toString().toInt()
-            val y = yValue.text.toString().toInt()
-            val dataPoint = DataPoint(x,y)
-            myRef.child(id!!).setValue(dataPoint)
-            retrieveData()
+      /*  findViewById<Button>(R.id.btnInsert).setOnClickListener {
+            insertData()
         }
+*/
     }
 
+  /*  private fun insertData() {
 
+        var x = xValue.text.toString().toInt()
+        var y = yValue.text.toString().toInt()
+        var dataPoint = DataPoint(x,y)
+        myRef.setValue(dataPoint)
+
+        retrieveData()
+    }
 
     private fun retrieveData() {
+
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val dataVals = ArrayList<Entry>()
@@ -70,10 +83,10 @@ class bbt_test : AppCompatActivity() {
         })
     }
 
-  private fun showChart(dataVals: ArrayList<Entry>) {
+    private fun showChart(dataVals: ArrayList<Entry>) {
 
         lineDataSet.values = dataVals
-        lineDataSet.label = ("Dataset1")
+        lineDataSet.label = ("Data set1")
         iLineDataSets.clear()
         iLineDataSets.add(lineDataSet)
         lineData = LineData(iLineDataSets)
@@ -82,6 +95,90 @@ class bbt_test : AppCompatActivity() {
         lineChart.invalidate()
 
     }
+}*/
+
+/*private fun FirebaseFirestore.addValueEventListener(valueEventListener: ValueEventListener) {
+    true
+}
+
+
+private fun Any.setValue(dataPoint: DataPoint) {
+    return
+}*/
+
+private fun  insertData(){
+    insertBtn.setOnClickListener {
+        val id = myRef.push().key
+        val x = xValue.text.toString().toInt()
+        val y = yValue.text.toString().toInt()
+        val dataPoint = DataPoint(x,y)
+        myRef.setValue(dataPoint)
+
+        retrieveData()
+    }
+}
+
+
+
+private fun retrieveData() {
+    myRef.addValueEventListener(object : ValueEventListener {
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+            val dataVals = ArrayList<Entry>()
+            if (dataSnapshot.hasChildren()) {
+                for (myDataSnapshot in dataSnapshot.children) {
+                    val dataPoint = myDataSnapshot.getValue(DataPoint::class.java)
+                    dataVals.add(Entry(dataPoint!!.getxValue().toFloat(), dataPoint.getyValue().toFloat()))
+                }
+                showChart(dataVals)
+            } else {
+                lineChart.clear()
+                lineChart.invalidate()
+            }
+        }
+
+        override fun onCancelled( error: DatabaseError) {}
+    })
+}
+
+private fun showChart(dataVals: ArrayList<Entry>) {
+
+    lineDataSet.values = dataVals
+    lineDataSet.label = ("Data set1")
+    iLineDataSets.clear()
+    iLineDataSets.add(lineDataSet)
+    lineData = LineData(iLineDataSets)
+    lineChart.clear()
+    lineChart.data = lineData
+    lineChart.invalidate()
+
+}
+}
+
+private fun FirebaseFirestore.addValueEventListener(valueEventListener: ValueEventListener) {
+fun  onDataChange(snapshot: DataSnapshot){
+   val  dataVals = ArrayList<Entry>()
+   if (snapshot.hasChild()){
+       for (myDataSnapshot in snapshot.children){
+           val dataPoint = myDataSnapshot.getValue(DataPoint::class.java)
+           dataVals.add(Entry(dataPoint!!.getxValue().toFloat(), dataPoint.getyValue().toFloat()))
+       }
+
+
+   }
+}
+}
+
+private fun DataSnapshot.hasChild(): Boolean {
+return true
+}
+
+private fun Any.setValue(dataPoint: DataPoint) {
+
+
+}
+
+private fun FirebaseFirestore.push(): Any {
+return  true
 }
 
 

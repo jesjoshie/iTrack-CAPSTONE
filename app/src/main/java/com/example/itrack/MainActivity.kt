@@ -10,28 +10,25 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.example.itrack.models.last_period_info
 import java.lang.Exception
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    var btn1Text = " "
-    var btn2Text = " "
-    var purpose = " "
-    var lPeriodDate = " "
+    lateinit var  mNotesList: RecyclerView
+    lateinit var  gridLayoutManager: GridLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        btn1Text = findViewById<Button>(R.id.trackperiod).hint.toString()
-        btn2Text = findViewById<Button>(R.id.pregnancy).hint.toString()
-        findViewById<Button>(R.id.trackperiod).setOnClickListener { next(btn1Text) }
-        findViewById<Button>(R.id.pregnancy).setOnClickListener { next(btn2Text) }
-    }
-    //button next
-    private fun next(purpose: String){
-        val purposeIntent = Intent(applicationContext, startInformation::class.java)
-        purposeIntent.putExtra("purpose", purpose)
-        startActivity(purposeIntent)
+/*        mNotesList = findViewById(R.id.main_notes_list)
+        gridLayoutManager = GridLayoutManager(this,3,VERTICAL,false)
+
+        mNotesList.setHasFixedSize(true)
+        mNotesList.layoutManager(gridLayoutManager)*/
+
     }
 }

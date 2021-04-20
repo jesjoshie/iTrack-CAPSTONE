@@ -6,12 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.AdapterView
 import android.widget.GridView
-import com.example.itrack.BBTinterface
-import com.example.itrack.MoodTracker
-import com.example.itrack.R
+import com.example.itrack.*
 import com.example.itrack.adapters.ListOfGraphSelection
 import com.example.itrack.adapters.graphGridView
-import com.example.itrack.bbt_test
+import com.example.itrack.Mood as Mood
 
 
 class graphDataFragment : Fragment(R.layout.fragment_graph_data) {
@@ -30,10 +28,10 @@ class graphDataFragment : Fragment(R.layout.fragment_graph_data) {
                     val pos2 = parent.getItemAtPosition(1)
 
                     if (imgPos == pos1){
-                        startActivity(Intent(activity,bbt_test::class.java))
+                        startActivity(Intent(activity, bbt_interface::class.java))
                     }
                     else if (imgPos == pos2){
-                        startActivity(Intent(activity,MoodTracker::class.java))
+                        startActivity(Intent(activity,Mood::class.java))
                     }
                     else true
                 }

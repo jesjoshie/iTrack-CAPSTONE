@@ -1,69 +1,115 @@
-package com.example.itrack
+ package com.example.itrack
 
-import android.app.DatePickerDialog
-import android.content.Intent
+
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.text.SimpleDateFormat
-import java.util.*
+import com.google.firebase.database.*
+import java.lang.String
 
 
 class MoodTracker : AppCompatActivity() {
+lateinit var database: FirebaseDatabase
+lateinit var  reference: DatabaseReference
+lateinit var  member: Member
+   var i = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mood_tracker)
-      /*  val actionbar = supportActionBar
-        actionbar!!.setTitle("This is New Activity")
-        actionbar.setDisplayHomeAsUpEnabled(true)
-        actionbar.setDisplayHomeAsUpEnabled(true)*/
-     /*   val edit = findViewById<ImageButton>(R.id.add)
-        edit.setOnClickListener {
-            var dialog = CustomDialogFragment()
-            dialog.show(supportFragmentManager,"customDialog")
+       /* reference = database.reference*/
+      /*  member = Member()
+
+        val submit = findViewById<Button>(R.id.submitButton)
+        val m1 = findViewById<CheckBox>(R.id.family)
+        val m2 = findViewById<CheckBox>(R.id.exercise)
+        val m3 = findViewById<CheckBox>(R.id.date1)
+        val m4 = findViewById<CheckBox>(R.id.sports)
+        val m5 = findViewById<CheckBox>(R.id.friends)
+        val m6 = findViewById<CheckBox>(R.id.sleep)
+        val m7 = findViewById<CheckBox>(R.id.movie)
+        val m8 = findViewById<CheckBox>(R.id.cleaning)
+
+        val d1 = "Family"
+        val d2 = "Exercise"
+        val d3 = "Date"
+        val d4 = "Sports"
+        val d5 = "Friends"
+        val d6 = "Sleep"
+        val d7 = "Movies"
+        val d8 = "Cleaning"
+
+    reference.addValueEventListener(object:ValueEventListener{
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+             if (dataSnapshot.exists()){
+                   i = dataSnapshot.childrenCount as Int
+             }
+
+                }
+
+        override fun onCancelled(databaseError: DatabaseError) {
+
+        }
+
+    } )
+
+        submit.setOnClickListener {
+            if (m1.isChecked){
+                    member.mood(d1)
+                    reference.child(String.valueOf(i + 1)).setValue(member)
+
+            }else{
+
+            }
+            if(m2.isChecked){
+                member.mood(d2)
+                reference.child(String.valueOf(i + 1)).setValue(member)
+
+            }else{
+                if(m3.isChecked){
+                    member.mood(d3)
+                    reference.child(String.valueOf(i + 1)).setValue(member)
+
+                }else{
+                    if (m4.isChecked){
+                        member.mood(d4)
+                        reference.child(String.valueOf(i + 1)).setValue(member)
+
+                    }else{
+
+                    }
+                    if(m5.isChecked){
+                        member.mood(d5)
+                        reference.child(String.valueOf(i + 1)).setValue(member)
+
+                    }else{
+
+                    }
+                    if(m6.isChecked){
+                        member.mood(d6)
+                        reference.child(String.valueOf(i + 1)).setValue(member)
+
+                    }else{
+
+                    }
+                    if(m7.isChecked){
+                        member.mood(d7)
+                        reference.child(String.valueOf(i + 1)).setValue(member)
+
+                    }else{
+
+                    }
+                    if (m8.isChecked){
+                        member.mood(d8)
+                        reference.child(String.valueOf(i + 1)).setValue(member)
+
+                    }
+                }
+            }
+
 
         }*/
-
-       /* val Smile = findViewById<ImageButton>(R.id.smile)
-        val Good = findViewById<ImageButton>(R.id.good)
-        val Meh = findViewById<ImageButton>(R.id.meh)
-        val Sad = findViewById<ImageButton>(R.id.sad)
-        val Awful = findViewById<ImageButton>(R.id.awful)*/
-        val submit = findViewById<Button>(R.id.submitButton)
-        submit.setOnClickListener {
-            Toast.makeText(applicationContext,"Data saved",Toast.LENGTH_SHORT).show()
-        }
-
-      /*  Smile.setOnClickListener {
-            val purposeIntent = Intent(applicationContext, SmileInterface::class.java)
-            startActivity(purposeIntent)
-        }
-        Good.setOnClickListener {
-            val purposeIntent = Intent(applicationContext, Goodinterface::class.java)
-            startActivity(purposeIntent)
-        }
-        Meh.setOnClickListener {
-            val purposeIntent = Intent(applicationContext, Mehinterface::class.java)
-            startActivity(purposeIntent)
-        }
-        Sad.setOnClickListener {
-            val purposeIntent = Intent(applicationContext, Sadinterface::class.java)
-            startActivity(purposeIntent)
-        }
-        Awful.setOnClickListener {
-            val purposeIntent = Intent(applicationContext, Awfulinterface::class.java)
-            startActivity(purposeIntent)
-        }
-*/
-
-
     }
-
-
-
 }
 
