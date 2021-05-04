@@ -28,7 +28,7 @@ class graphDataFragment : Fragment(R.layout.fragment_graph_data) {
                     val pos2 = parent.getItemAtPosition(1)
 
                     if (imgPos == pos1){
-                        startActivity(Intent(activity, bbt_interface::class.java))
+                        startActivity(Intent(activity, bbt_testing::class.java))
                     }
                     else if (imgPos == pos2){
                         startActivity(Intent(activity,Journal_::class.java))

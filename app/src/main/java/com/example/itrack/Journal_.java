@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.itrack.adapters.NoteModel;
 import com.example.itrack.adapters.NoteViewHolder;
@@ -59,18 +62,38 @@ private DatabaseReference fNotesDatabase;
                 fNotesDatabase.child(noteId).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String journal = snapshot.child("journal").getValue().toString();
-                        String timestamp = snapshot.child("timestamp").getValue().toString();
+                        if (snapshot.hasChild("journal") && snapshot.hasChild("timestamp")) {
+                            String journal = snapshot.child("journal").getValue().toString();
+                            String timestamp = snapshot.child("timestamp").getValue().toString();
 
-                        noteViewHolder.setNoteJournal(journal);
-                        noteViewHolder.setNoteTime(timestamp);
+                            noteViewHolder.setNoteJournal(journal);
+                            noteViewHolder.setNoteTime(timestamp);
+                            noteViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent =  new Intent(Journal_.this,Mood.class);
+                                    intent.putExtra("noteId",noteId);
+                                    startActivity(intent);
+
+                                }
+                            });
+                            noteViewHolder.noteCard.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(Journal_.this, Mood.class);
+                                    intent.putExtra("noteId", noteId);
+                                    startActivity(intent);
+
+                                }
+                            });
+                        }
+
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
-                });
+                    });
 
 
             }
@@ -94,5 +117,10 @@ private DatabaseReference fNotesDatabase;
                 break;
         }
         return true;
+    }
+
+private int dpToPx(int dp){
+    Resources r = getResources();
+    return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp,r.getDisplayMetrics()));
     }
 }

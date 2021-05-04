@@ -2,6 +2,8 @@ package com.example.itrack.adapters;
 
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itrack.R;
@@ -9,8 +11,11 @@ import com.example.itrack.R;
 
 public class NoteViewHolder extends RecyclerView.ViewHolder {
 
-    View mView;
+    public View mView;
+    public View noteCard;
+
     TextView textJournal,textTime;
+
 
     public NoteViewHolder(View itemView) {
         super(itemView);
@@ -18,7 +23,7 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
 
         textJournal = mView.findViewById(R.id.note_journal);
         textTime = mView.findViewById(R.id.note_time);
-
+        noteCard = mView.findViewById(R.id.note_card);
 
     }
     public void  setNoteJournal(String journal){

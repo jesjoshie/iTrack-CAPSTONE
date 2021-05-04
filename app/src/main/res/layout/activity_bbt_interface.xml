@@ -39,7 +39,7 @@
         android:layout_marginBottom="417dp"
         android:backgroundTint="@color/azure"
         android:text="INSERT" />
-  
+
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart"
         android:layout_width="match_parent"

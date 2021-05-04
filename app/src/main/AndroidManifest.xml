@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ITrack">
+        <activity android:name=".bbt_testing"></activity>
         <activity android:name=".Journal_" />
         <activity android:name=".ShowActivity" />
         <activity android:name=".Mood">

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,6 +41,9 @@ public class Mood extends AppCompatActivity {
     Member member;
     Member1 member1;
     int i = 0;
+    private Menu mainMenu;
+    private  String noteID ="no";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,20 @@ public class Mood extends AppCompatActivity {
         setContentView(R.layout.activity_mood);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Mood");
+
+        try {
+            noteID = getIntent().getStringExtra("noteId");
+            if (noteID.equals("no")) {
+                mainMenu.getItem(0).setVisible(false);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
         fAuth = FirebaseAuth.getInstance();
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       fNotesDatabase = FirebaseDatabase.getInstance().getReference().child("Journal").child(fAuth.getCurrentUser().getUid());
 
         member = new Member();
@@ -221,5 +238,50 @@ public class Mood extends AppCompatActivity {
     }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
 
+        getMenuInflater().inflate(R.menu.new_note_menu,menu);
+        mainMenu = menu;
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item) {
+      super.onOptionsItemSelected(item);
+
+      switch (item.getItemId()){
+          case  android.R.id.home:
+              finish();
+              break;
+          case R.id.new_note_delete_btn:
+              if (!noteID.equals("no")){
+                    deleteNote();
+              }
+
+              break;
+
+      }
+
+        return true;
+    }
+    private  void deleteNote(){
+        fNotesDatabase.child(noteID).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if (task.isSuccessful()){
+                    Toast.makeText(Mood.this,"NOTE DELETED",Toast.LENGTH_SHORT).show();
+                    noteID = "no";
+                    finish();
+                }else{
+                    Log.e("NewNoteActivity",task.getException().toString());
+                    Toast.makeText(Mood.this,"ERROR"+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+    }
 }
