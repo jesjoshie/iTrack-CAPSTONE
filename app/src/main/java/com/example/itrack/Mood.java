@@ -29,6 +29,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.grpc.Server;
+
 public class Mood extends AppCompatActivity {
     EditText etContent;
     Button button;
@@ -43,6 +45,7 @@ public class Mood extends AppCompatActivity {
     int i = 0;
     private Menu mainMenu;
     private  String noteID ="no";
+    private boolean isExist;
 
 
     @Override
@@ -56,6 +59,9 @@ public class Mood extends AppCompatActivity {
             noteID = getIntent().getStringExtra("noteId");
             if (noteID.equals("no")) {
                 mainMenu.getItem(0).setVisible(false);
+                isExist = false;
+            }else{
+                isExist= true;
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -209,10 +215,35 @@ public class Mood extends AppCompatActivity {
                 }
             }
         });
+        putData();
     }
+private void putData(){
+        if (isExist){
+        fNotesDatabase.child(noteID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.hasChild("journal")) {
+                    String journal = snapshot.child("journal").getValue().toString();
+                    etContent.setText(journal);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        }
+}
     private void createNote(String journal) {
         if (fAuth.getCurrentUser() != null){
+            if (isExist){
+                Map updateMap = new HashMap();
+                updateMap.put("journal", etContent.getText().toString().trim());
+                updateMap.put("timestamp", ServerValue.TIMESTAMP);
+            fNotesDatabase.child(noteID).updateChildren(updateMap);
+            Toast.makeText(this,"Journal Updated",Toast.LENGTH_SHORT).show();
+            }else{
             final DatabaseReference newNoteRef = fNotesDatabase.push();
             final  Map noteMap = new HashMap();
             noteMap.put("journal", journal);
@@ -235,6 +266,7 @@ public class Mood extends AppCompatActivity {
                 }
             });
             mainThread.start();
+            }
     }
     }
 
